@@ -31,14 +31,23 @@ const Navbar = () => {
       </div>
       <div className="nav-link-book flex items-center gap-5">
         <div className="flex gap-5">
-        {links.map((items,i)=>(
-          <div className="hover:text-blue-400 transition-all duration-500 cursor-pointer" key={i}>{items.title}</div>
-        ))}
+          {links.map((items, i) => (
+            <Link to={items.link}
+              className="hover:text-blue-400 transition-all duration-500 cursor-pointer"
+              key={i}
+            >
+              {items.title}
+            </Link>
+          ))}
         </div>
-       <div className="flex gap-4">
-        <button className="px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-black transition-all duration-500">Login</button>
-        <button className= "px-4 py-1 bg-blue-500 text-white rounded hover:bg-white hover:text-black">SignUp</button>
-       </div>
+        <div className="flex gap-4">
+          <button className="px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-black transition-all duration-500">
+            Login
+          </button>
+          <button className="px-4 py-1 bg-blue-500 text-white rounded hover:bg-white hover:text-black">
+            SignUp
+          </button>
+        </div>
       </div>
     </div>
   );
