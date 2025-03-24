@@ -17,8 +17,8 @@ const Hero = () => {
           </button>
         </div>
       </div>
-      <div className="w-full lg:w1/2">
-      <img src={require("../components/images/1.jpeg")} alt="hero image" className="w-4/6 h-[450px] ml-52"></img>
+      <div className="w-full lg:w1/2 h-auto lg-h-[100%] flex items-center justify-center">
+      <img src={require("../components/images/pngegg (3).png")} alt="hero image" className="w-4/6 h-[450px] "></img>
       </div>
     </div>
   );
