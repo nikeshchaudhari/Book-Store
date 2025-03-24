@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaGripLines } from "react-icons/fa";
 
 const Navbar = () => {
   const links = [
@@ -24,32 +25,88 @@ const Navbar = () => {
       link: "/profile",
     },
   ];
+  const [Mobile, setMobile] = useState("hidden");
+
   return (
-    <div className="bg-zinc-800 text-white px-4 py-5 flex justify-between">
-      <div>
-        <h1 className="text-xl font-semibold">Book Store</h1>
-      </div>
-      <div className="nav-link-book flex items-center gap-5">
-        <div className="flex gap-5">
-          {links.map((items, i) => (
-            <Link to={items.link}
-              className="hover:text-blue-400 transition-all duration-500 cursor-pointer"
-              key={i}
+    <>
+      <nav className=" z-50 relative bg-zinc-800 text-white px-4 py-5 flex justify-between">
+        <Link to="/">
+          <h1 className="text-xl font-semibold">Book Store</h1>
+        </Link>
+        <div className="nav-link-book block md:flex items-center gap-5">
+          <div className="hidden md:flex gap-5">
+            {links.map((items, i) => (
+              <Link
+                to={items.link}
+                className="hover:text-blue-400 transition-all duration-500 cursor-pointer"
+                key={i}
+              >
+                {items.title}{" "}
+              </Link>
+            ))}
+          </div>
+          <div className="hidden md:flex gap-4">
+            <Link
+              to="./Login"
+              className="px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-black transition-all duration-500"
             >
-              {items.title}
+              Login
             </Link>
-          ))}
-        </div>
-        <div className="flex gap-4">
-          <button className="px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-black transition-all duration-500">
-            Login
+            <Link
+              to="./SignUp"
+              className="px-4 py-1   bg-blue-500 text-white rounded hover:bg-white hover:text-black"
+            >
+              SignUp
+            </Link>
+          </div>
+          <button
+            className="to-white text-2xl hover:text-zinc-400 md:hidden"
+            onClick={() => {
+              if (Mobile === "hidden") {
+                setMobile("block");
+              } else {
+                setMobile("hidden");
+              }
+            }}
+          >
+            <FaGripLines />
           </button>
-          <button className="px-4 py-1 bg-blue-500 text-white rounded hover:bg-white hover:text-black">
-            SignUp
-          </button>
         </div>
+      </nav>
+      <div
+        className={`${Mobile} ml-60 bg-zinc-800 h-screen absolute top-0 left-0 w-full z-40 flex flex-col items-center justify-center`}
+      >
+        {links.map((items, i) => (
+          <Link
+            to={items.link}
+            className="text-white text-xl mr-60  hover:text-blue-500 mb-4 font-semibold transition-all duration-500 cursor-pointer"
+            key={i}
+            onClick={() => {
+              if (Mobile === "hidden") {
+                setMobile("block");
+              } else {
+                setMobile("hidden");
+              }
+            }}
+          >
+            {items.title}
+          </Link>
+        ))}
+
+        <Link
+          to="./Login"
+          className="px-8 py-2 mb-8 text-xl mr-60 font-semibold border border-blue-500 rounded text-white hover:bg-white hover:text-black transition-all duration-500"
+        >
+          Login
+        </Link>
+        <Link
+          to="./SignUp"
+          className="px-8 py-2 mb-8 text-xl mr-60 font-semiboldborder bg-blue-500 text-white rounded hover:bg-white hover:text-black"
+        >
+          SignUp
+        </Link>
       </div>
-    </div>
+    </>
   );
 };
 
