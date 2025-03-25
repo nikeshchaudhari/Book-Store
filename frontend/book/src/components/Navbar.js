@@ -60,7 +60,7 @@ const Navbar = () => {
             </Link>
           </div>
           <button
-            className="to-white text-2xl hover:text-zinc-400 md:hidden"
+            className="to-white text-2xl hover:text-zinc-400 md:hidden mr-5"
             onClick={() => {
               if (Mobile === "hidden") {
                 setMobile("block");
